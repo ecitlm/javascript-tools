@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-24 14:09:24
+ * @Last Modified time: 2017-09-25 20:51:11
  */
 (function(win, doc) {
 	var Tools = {
@@ -107,7 +107,24 @@
 				}
 			}
 			return arr.join('&');
+		},
+
+		FormatDate: function(value) {
+			var date = new Date();
+			var month = date.getMonth() + 1;
+			var strDate = date.getDate();
+			if (month >= 1 && month <= 9) {
+				month = "0" + month;
+			}
+			if (strDate >= 0 && strDate <= 9) {
+				strDate = "0" + strDate;
+			}
+			var currentdate = date.getFullYear() + "-" + month + "-" + strDate;
+			return currentdate;
+
 		}
+
+
 
 	}
 	window.Tools = Tools
