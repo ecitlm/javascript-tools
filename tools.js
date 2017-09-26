@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-25 20:51:11
+ * @Last Modified time: 2017-09-26 21:50:17
  */
 (function(win, doc) {
 	var Tools = {
@@ -109,22 +109,77 @@
 			return arr.join('&');
 		},
 
-		FormatDate: function(value) {
+		//获取当前时间戳 转化为2017-25-09 13:05:55
+		FormatDate: function() {
 			var date = new Date();
-			var month = date.getMonth() + 1;
-			var strDate = date.getDate();
-			if (month >= 1 && month <= 9) {
-				month = "0" + month;
+			var MM = date.getMonth() + 1;
+			var DD = date.getDate();
+			var HH = date.getHours()
+			var ii = date.getMinutes();
+			var ss = date.getSeconds();
+			if (MM >= 1 && MM <= 9) {
+				MM = "0" + MM;
 			}
-			if (strDate >= 0 && strDate <= 9) {
-				strDate = "0" + strDate;
+			if (DD >= 0 && DD <= 9) {
+				DD = "0" + DD;
 			}
-			var currentdate = date.getFullYear() + "-" + month + "-" + strDate;
+			if (HH >= 0 && HH <= 9) {
+				HH = "0" + HH;
+			}
+			if (ii >= 0 && ii <= 9) {
+				ii = "0" + ii;
+			}
+			if (ss >= 0 && ss <= 9) {
+				ss = "0" + ss;
+			}
+			var currentdate = date.getFullYear() + "-" + DD + "-" + MM + " " + HH + ":" + ii + ":" + ss;
 			return currentdate;
 
+		},
+		//检查设备是安卓还是IOS还是PC
+		os: function() {
+			var ua = navigator.userAgent,
+				isWindowsPhone = /(?:Windows Phone)/.test(ua),
+				isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+				isAndroid = /(?:Android)/.test(ua),
+				isFireFox = /(?:Firefox)/.test(ua),
+				isChrome = /(?:Chrome|CriOS)/.test(ua),
+				isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+				isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+				isPc = !isPhone && !isAndroid && !isSymbian;
+			return {
+				isTablet: isTablet,
+				isPhone: isPhone,
+				isAndroid: isAndroid,
+				isPc: isPc
+			};
+		},
+		//检测表单验证
+		checkForm: function(str, type) {
+			switch (type) {
+				case 'email':
+					return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
+				case 'phone':
+					return /^1[3|4|5|7|8][0-9]{9}$/.test(str);
+				case 'tel':
+					return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
+				case 'number':
+					return /^[0-9]$/.test(str);
+				case 'english':
+					return /^[a-zA-Z]+$/.test(str);
+				case 'text':
+					return /^\w+$/.test(str);
+				case 'chinese':
+					return /^[\u4E00-\u9FA5]+$/.test(str);
+				case 'lower':
+					return /^[a-z]+$/.test(str);
+				case 'upper':
+					return /^[A-Z]+$/.test(str);
+				default:
+					console.error("没有匹配到要check的类型type:"+type);
+					return false;
+			}
 		}
-
-
 
 	}
 	window.Tools = Tools

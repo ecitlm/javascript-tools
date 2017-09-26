@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="ecitlm">
+  <meta name="Author" content="ecitlm">
+  <meta name="Keywords" content="ecitlm">
+  <meta name="Description" content="ecitlm">
+  <title>test</title>
+  <script src="tools.js"></script>
+ </head>
+ <body>
+  
+
+<script>
+
+
+console.log("================userAgent======================")
+	console.log(Tools.os().isPhone);
+	var ua= navigator.userAgent.toLowerCase();
+	console.log(ua.match("iphone"));
+	var regx=/phone|ipad/;
+	console.log(regx.test(ua));
+
+console.info("================checkform======================");
+var phone="15079111716";
+console.log(Tools.checkForm(phone,"phones"));
+
+
+
+
+
+
+
+</script>
+ </body>
+</html>
