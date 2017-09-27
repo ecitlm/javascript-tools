@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-26 21:50:17
+ * @Last Modified time: 2017-09-27 22:27:35
  */
 (function(win, doc) {
 	var Tools = {
@@ -176,9 +176,14 @@
 				case 'upper':
 					return /^[A-Z]+$/.test(str);
 				default:
-					console.error("没有匹配到要check的类型type:"+type);
+					console.error("没有匹配到要check的类型type:" + type);
 					return false;
 			}
+		},
+		//替换手机号的的 4-7位为138****8888
+		replacePhone: function(phone) {
+			phone = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+			return phone;
 		}
 
 	}
