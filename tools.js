@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-27 22:27:35
+ * @Last Modified time: 2017-09-28 21:21:56
  */
 (function(win, doc) {
 	var Tools = {
@@ -184,6 +184,10 @@
 		replacePhone: function(phone) {
 			phone = phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
 			return phone;
+		},
+		//去除首尾空格   str.trim()
+		String.prototype.trim = function() {
+			return this.replace(/(^\s*)|(\s*$)/g, '');
 		}
 
 	}
