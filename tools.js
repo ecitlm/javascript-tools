@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-29 09:32:05
+ * @Last Modified time: 2017-09-29 09:33:47
  */
 (function(win, doc) {
 	var Tools = {
@@ -191,16 +191,16 @@
 		},
 		//正在加载动画效果  使用时好需要根据修改样式来实现出相应的效果
 		loadingBar: function() {
-			var loadDiv = document.createElement("div");
+			var loadDiv = doc.createElement("div");
 			loadDiv.innerHTML = "<div>正在加载动画效果</div>";
 			var style = "position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);z-index: 9999";
 			loadDiv.setAttribute('style', style);
 			loadDiv.id = "loadingBar";
-			document.body.appendChild(loadDiv);
-			documnet.onreadystatechange = function() {
-				if (document.readyState == "complete") {
+			doc.body.appendChild(loadDiv);
+			doc.onreadystatechange = function() {
+				if (doc.readyState == "complete") {
 					setTimeout(function() {
-						document.body.removeChild(document.getElementById("loadingBar"));//可能去除的效果很快、加300ms延迟
+						doc.body.removeChild(doc.getElementById("loadingBar"));//可能去除的效果很快、加300ms延迟
 					}, 300)
 				}
 			}
