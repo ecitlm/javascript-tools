@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-28 21:21:56
+ * @Last Modified time: 2017-09-29 09:32:05
  */
 (function(win, doc) {
 	var Tools = {
@@ -188,6 +188,22 @@
 		//去除首尾空格   str.trim()
 		String.prototype.trim = function() {
 			return this.replace(/(^\s*)|(\s*$)/g, '');
+		},
+		//正在加载动画效果  使用时好需要根据修改样式来实现出相应的效果
+		loadingBar: function() {
+			var loadDiv = document.createElement("div");
+			loadDiv.innerHTML = "<div>正在加载动画效果</div>";
+			var style = "position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.5);z-index: 9999";
+			loadDiv.setAttribute('style', style);
+			loadDiv.id = "loadingBar";
+			document.body.appendChild(loadDiv);
+			documnet.onreadystatechange = function() {
+				if (document.readyState == "complete") {
+					setTimeout(function() {
+						document.body.removeChild(document.getElementById("loadingBar"));//可能去除的效果很快、加300ms延迟
+					}, 300)
+				}
+			}
 		}
 
 	}
