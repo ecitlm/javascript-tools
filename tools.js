@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-10-10 18:30:07
+ * @Last Modified time: 2017-10-10 19:48:59
  */
 (function(win, doc) {
 	var Tools = {
@@ -186,8 +186,8 @@
 			return phone;
 		},
 		//去除首尾空格   str.trim()
-		trim:function() {
-			return this.replace(/(^\s*)|(\s*$)/g, '');
+		trim:function(str) {
+			return str.replace(/(^\s*)|(\s*$)/g, '');
 		},
 		//正在加载动画效果  使用时好需要根据修改样式来实现出相应的效果
 		loadingBar: function() {
