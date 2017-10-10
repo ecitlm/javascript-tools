@@ -2,7 +2,7 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-09-29 09:33:47
+ * @Last Modified time: 2017-10-10 18:30:07
  */
 (function(win, doc) {
 	var Tools = {
@@ -186,7 +186,7 @@
 			return phone;
 		},
 		//去除首尾空格   str.trim()
-		String.prototype.trim = function() {
+		trim:function() {
 			return this.replace(/(^\s*)|(\s*$)/g, '');
 		},
 		//正在加载动画效果  使用时好需要根据修改样式来实现出相应的效果
@@ -200,10 +200,32 @@
 			doc.onreadystatechange = function() {
 				if (doc.readyState == "complete") {
 					setTimeout(function() {
-						doc.body.removeChild(doc.getElementById("loadingBar"));//可能去除的效果很快、加300ms延迟
+						doc.body.removeChild(doc.getElementById("loadingBar")); //可能去除的效果很快、加300ms延迟
 					}, 300)
 				}
 			}
+		},
+		//验证码倒计时
+		smsCode: function() {
+			return {
+				wait: 10,
+				time: function(o) {
+					var _this = this
+					if (this.wait == 0) {
+						o.removeAttribute("disabled");
+						o.value = "免费获取验证码";
+						this.wait = 60;
+					} else {
+						o.setAttribute("disabled", true);
+						o.value = "重新发送(" + this.wait + ")";
+						this.wait--;
+						setTimeout(function() {
+							_this.time(o)
+						}, 1000)
+					}
+				}
+			}
+
 		}
 
 	}

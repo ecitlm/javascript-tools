@@ -7,11 +7,12 @@
   <meta name="Keywords" content="ecitlm">
   <meta name="Description" content="ecitlm">
   <title>test</title>
-  <script src="tools.js"></script>
  </head>
  <body>
-  
+ <input type="button" id="btn" value="免费获取验证码" />
 
+
+ <script src="tools.js"></script>
 <script>
 
 
@@ -27,8 +28,9 @@ var phone="15079111716";
 console.log(Tools.checkForm(phone,"phones"));
 
 
+  document.getElementById("btn").onclick=function(){Tools.smsCode().time(this);}
 
-
+console.log(Tools.smsCode().time)
 
 
 
