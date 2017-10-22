@@ -2,9 +2,10 @@
  * @Author: ecitlm
  * @Date:   2017-09-22 23:15:16
  * @Last Modified by:   ecitlm
- * @Last Modified time: 2017-10-10 22:09:15
+ * @Last Modified time: 2017-10-22 21:12:28
  */
 (function(win, doc) {
+
 	var Tools = {
 
 		//id或class选择器$("elem") 
@@ -26,7 +27,6 @@
 				return ClassMatch;
 			}
 		},
-		//ajax
 		ajax: function() {
 			var ajaxData = {
 				type: arguments[0].type || "GET",
@@ -110,8 +110,9 @@
 		},
 
 		//获取当前时间戳 转化为2017-25-09 13:05:55
-		FormatDate: function() {
-			var date = new Date();
+		FormatDate: function(str) {
+			//var date = new Date(str);
+			date = str ? new Date(str) :new Date();
 			var MM = date.getMonth() + 1;
 			var DD = date.getDate();
 			var HH = date.getHours()
