@@ -226,7 +226,29 @@
 				}
 			}
 
-		}
+		},
+		/**
+         * 序列化
+         * @param value
+         * @returns {string}
+         */
+        serialize: function (value) {
+            if (typeof value === 'string') return value;
+            return JSON.stringify(value);
+        },
+        /**
+         * 反序列化
+         * @param value
+         * @returns {*}
+         */
+        deserialize: function (value) {
+            if (typeof value !== 'string') return undefined;
+            try {
+                return JSON.parse(value);
+            } catch (e) {
+                return value || undefined;
+            }
+        }
 
 	}
 	window.Tools = Tools
