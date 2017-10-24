@@ -230,8 +230,6 @@
 		},
 		/**
          * 序列化
-         * @param value
-         * @returns {string}
          */
         serialize: function (value) {
             if (typeof value === 'string') return value;
@@ -239,8 +237,6 @@
         },
         /**
          * 反序列化
-         * @param value
-         * @returns {*}
          */
         deserialize: function (value) {
             if (typeof value !== 'string') return undefined;
