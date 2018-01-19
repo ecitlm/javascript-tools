@@ -110,9 +110,9 @@
 		},
 
 		//获取当前时间戳 转化为2017-25-09 13:05:55
-		FormatDate: function(str) {
-			//var date = new Date(str);
-			date = str ? new Date(str) : new Date();
+		FormatDate: function(timestamp) {
+			//var date = new Date(timestamp);
+			date = timestamp ? new Date(Number(timestamp)) : new Date();
 			var MM = date.getMonth() + 1;
 			var DD = date.getDate();
 			var HH = date.getHours()
@@ -133,7 +133,7 @@
 			if (ss >= 0 && ss <= 9) {
 				ss = "0" + ss;
 			}
-			var currentdate = date.getFullYear() + "-" + DD + "-" + MM + " " + HH + ":" + ii + ":" + ss;
+			var currentdate = date.getFullYear() + "-" + MM + "-" + DD + " " + HH + ":" + ii + ":" + ss;
 			return currentdate;
 
 		},
@@ -226,7 +226,6 @@
 					}
 				}
 			}
-
 		},
 		/**
          * 序列化

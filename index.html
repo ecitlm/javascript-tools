@@ -14,30 +14,26 @@
 
  <script src="tools.js"></script>
 <script>
-
-
-console.log("================userAgent======================")
+	console.log("================userAgent======================")
 	console.log(Tools.os().isPhone);
 	var ua= navigator.userAgent.toLowerCase();
 	console.log(ua.match("iphone"));
 	var regx=/phone|ipad/;
 	console.log(regx.test(ua));
 
-console.info("================checkform======================");
-var phone="15079111716";
-console.log(Tools.checkForm(phone,"phones"));
+	console.info("================checkform======================");
+	var phone="15079111716";
+	console.log(Tools.checkForm(phone,"phones"));
 
+	//console.log("==================时间倒计时=================")
+	document.getElementById("btn").onclick=function(){Tools.smsCode().time(this);}
+	
 
-  document.getElementById("btn").onclick=function(){Tools.smsCode().time(this);}
-
-console.log(Tools.smsCode().time)
-
-var date=new Date().getTime();
-console.log(date)
-var type=1508677562356
-console.log(typeof type)
-console.log(Tools.FormatDate())
-
+	var date=new Date().getTime();
+	console.log(date)
+	var type="1508677562356"
+	console.log(typeof type)
+	console.log(Tools.FormatDate(type))
 </script>
  </body>
 </html>
