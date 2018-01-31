@@ -281,6 +281,17 @@
 		 * */
 		clearCookie:function(name){
 			setCookie(name, "", -1);  
+		},
+		//获取字符串的长度
+		strLength:function (str) {
+			var a = 0;
+			for (var i = 0; i < str.length; i++) {
+				if (str.charCodeAt(i) > 255)
+					a += 2;//按照预期计数增加2
+				else
+					a++;
+			}
+			return a;
 		}
 
 	}
