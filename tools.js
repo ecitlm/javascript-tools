@@ -292,8 +292,15 @@
 					a++;
 			}
 			return a;
+		},
+		/*过滤html代码(把<>转换)*/
+		filterTag:function(str) {
+			str = str.replace(/&/ig, "&amp;");
+			str = str.replace(/</ig, "&lt;");
+			str = str.replace(/>/ig, "&gt;");
+			str = str.replace(" ", "&nbsp;");
+			return str;
 		}
-
 	}
 	window.Tools = Tools
 })(window, document)
