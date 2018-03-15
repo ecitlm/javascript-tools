@@ -170,6 +170,8 @@
 					return /^[a-zA-Z]+$/.test(str);
 				case 'text':
 					return /^\w+$/.test(str);
+				case 'qq':
+					return /^[1-9][0-9]{4,10}$/.test(str);
 				case 'chinese':
 					return /^[\u4E00-\u9FA5]+$/.test(str);
 				case 'lower':
